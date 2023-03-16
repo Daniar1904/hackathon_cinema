@@ -47,15 +47,16 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'ckeditor',
-    'corsheaders',
+    # 'corsheaders',
     #     my_apps
+    'account',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
+    # "corsheaders.middleware.CorsMiddleware",
+    # "django.middleware.common.CommonMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -89,7 +90,7 @@ WSGI_APPLICATION = 'Cinema.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
@@ -102,7 +103,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
-# AUTH_USER_MODEL = 'account.CustomUser' !!!!!!!
+AUTH_USER_MODEL = 'account.CustomUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -150,12 +151,12 @@ REST_FRAMEWORK = {
     ],
 }
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True                                  !!!!!!!!!!!!!!
-# EMAIL_HOST_USER = config('EMAIL_USER')
-# EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = config('EMAIL_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
