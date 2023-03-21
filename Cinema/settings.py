@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # 'corsheaders',
     #     my_apps
     'account',
+    'movies',
 ]
 
 MIDDLEWARE = [
