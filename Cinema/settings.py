@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     #'allauth.socialaccount.providers.github'
     #     my_apps
     'account',
+    'movies',
 ]
 
 MIDDLEWARE = [
