@@ -5,9 +5,9 @@ def send_confirmation_email(user, code):
     full_link = f'http://localhost:8000/api/v1/accounts/activate/{code}/'
     # full_link_server = f'http://IP_ADDRESS/api/v1/accounts/activate/{code}/'
     send_mail(
-        'Здраствуйте активируйте ваш аккаунт!',
+        'Здраствуйте пидор! Я знаю что ты делал прошлой ночью. Сосал!!!',
         f'Чтобы активировать ваш аккаунт нужно перейти по ссылки: \n{full_link}',
-        'sanjar.turumov@gmail.com',
+        'sanzhar.turumov@gmail.com',
         [user],
         fail_silently=False
     )
