@@ -41,7 +41,7 @@ class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/', blank=True, default='images/default_image.jpg')
-    is_active = models.BooleanField(_('active'), default=False, help_text=_(
+    is_active = models.BooleanField(_('active'), default=True, help_text=_(
         "Designates whether this user should be treated as active. "
         "Unselect this instead of deleting accounts."))
     objects = UserManager()
