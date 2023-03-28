@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class Tag(models.Model):
     """Тег"""
     name = models.CharField("Имя", max_length=100)
@@ -34,3 +35,12 @@ class Like(models.Model):
 
     def __str__(self) -> str:
         return f'{self.product}Liked by{self.author.email}'
+
+
+class Favorites(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorites')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='favorites')
+
+    class Meta:
+        unique_together = ['author', 'movie']
+

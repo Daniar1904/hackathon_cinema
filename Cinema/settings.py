@@ -28,10 +28,16 @@ SECRET_KEY = config('SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOST').split(' ')
 
+#SITE_ID = 1
 
 # Application definition
+
+#AUTHENTICATION_BACKENDS = [
+    #'django.contrib.auth.backends.ModelBackend',
+    #'allauth.account.auth_backends.AuthenticationBackend',
+#]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -48,9 +54,15 @@ INSTALLED_APPS = [
     'drf_yasg',
     'ckeditor',
     # 'corsheaders',
+    #'django.contrib.sites',
+    #'allauth',
+    #'allauth.account',
+    #'allauth.socialaccount',
+    #'allauth.socialaccount.providers.github'
     #     my_apps
     'account',
     'movies',
+    'rating',
 ]
 
 MIDDLEWARE = [
@@ -78,10 +90,21 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'django.template.context_processors.request',
             ],
         },
     },
 ]
+
+#SOCIALACCOUNT_PROVIDERS = {
+    #'github': {
+        #'APP': {
+            #'client_id': '123',
+            #'secret': '456',
+            #'key': ''
+         #}
+    #}
+#}
 
 WSGI_APPLICATION = 'Cinema.wsgi.application'
 
@@ -224,7 +247,6 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-SITE_ID = 1
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
