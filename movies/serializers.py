@@ -3,7 +3,8 @@ from rest_framework import serializers
 
 import movies
 from rating.serializers import ReviewSerializer
-from .models import Movie, Tag, Like
+from .models import Movie, Tag, Like, Favorites
+
 
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
@@ -68,3 +69,14 @@ class MovieSerializer(serializers.ModelSerializer):
         rating['ratings_count'] = instance.reviews.count()
         repr['stats'] = self.get_stats(instance)
         return repr
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorites
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        repr = super().to_representation(instance)
+        repr['movie'] = instance.movie()
+        return repr
+

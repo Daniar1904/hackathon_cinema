@@ -2,8 +2,9 @@ from rest_framework import generics, response
 
 import movies
 from rating.serializers import ReviewActionSerializer
+from rest_framework import generics, permissions
 from .models import Movie, Like
-from .serializers import MovieSerializer, LikeSerializer
+from .serializers import MovieSerializer, LikeSerializer, FavoriteSerializer
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
@@ -28,6 +29,16 @@ class MovieDetailView(generics.RetrieveAPIView):
         queryset = Movie.objects.get(pk=pk)
         serializer = MovieSerializer(queryset)
         return Response(serializer.data)
+
+
+class FavoriteCreateView(generics.CreateAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = FavoriteSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+        serializer.save(owner=self.request.user)
+
 
 
 @action(['GET', 'POST'], detail=True)
