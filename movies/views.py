@@ -25,12 +25,3 @@ class MovieDetailView(generics.RetrieveAPIView):
         queryset = Movie.objects.get(pk=pk)
         serializer = MovieSerializer(queryset)
         return Response(serializer.data)
-    
-
-
-   
-
-    
-
-
-        

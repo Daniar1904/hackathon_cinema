@@ -34,4 +34,3 @@ class Like(models.Model):
 
     def __str__(self) -> str:
         return f'{self.product}Liked by{self.author.email}'
-    
