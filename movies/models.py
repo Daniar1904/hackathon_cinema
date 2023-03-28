@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class Tag(models.Model):
     """Тег"""
     name = models.CharField("Имя", max_length=100)
